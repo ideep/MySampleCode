@@ -35,7 +35,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
-public class AddVenueActivityUpdated extends AppCompatActivity implements OnMapReadyCallback,
+public class AddVenueActivity extends AppCompatActivity implements OnMapReadyCallback,
 		GoogleApiClient.ConnectionCallbacks,
 		GoogleApiClient.OnConnectionFailedListener,
 		View.OnClickListener, GoogleMap.OnMarkerDragListener,LocationListener, GoogleMap.OnMarkerClickListener {
@@ -48,7 +48,7 @@ public class AddVenueActivityUpdated extends AppCompatActivity implements OnMapR
 	private FloatingActionButton addLocation;
 	private LocationRequest mLocationRequest;
 
-	private static final String TAG = AddVenueActivityUpdated.class.getSimpleName();
+	private static final String TAG = AddVenueActivity.class.getSimpleName();
 
 	private static final int MY_PERMISSIONS_REQUEST_LOCATION = 1;
 	private String URL = "content://com.jim.geofencedemo/locations";
@@ -264,12 +264,12 @@ public class AddVenueActivityUpdated extends AppCompatActivity implements OnMapR
 					case DialogInterface.BUTTON_POSITIVE:
 
 						Log.v(TAG,"Save this as venue");
-						Intent i = new Intent(AddVenueActivityUpdated.this, AddZoneActivity.class);
+						Intent i = new Intent(AddVenueActivity.this, AddZoneActivity.class);
 						i.putExtra(AppConstants.KEY_LATITUDE, latitude);
 						i.putExtra(AppConstants.KEY_LONGITUDE, longitude);
 						startActivity(i);
 
-						if (ContextCompat.checkSelfPermission(AddVenueActivityUpdated.this,
+						if (ContextCompat.checkSelfPermission(AddVenueActivity.this,
 								android.Manifest.permission.ACCESS_FINE_LOCATION)
 								== PackageManager.PERMISSION_GRANTED) {
 							mGoogleApiClient.connect();
@@ -279,7 +279,7 @@ public class AddVenueActivityUpdated extends AppCompatActivity implements OnMapR
 					case DialogInterface.BUTTON_NEGATIVE:
 
 						Log.v(TAG, "Don't save this venue");
-						if (ContextCompat.checkSelfPermission(AddVenueActivityUpdated.this,
+						if (ContextCompat.checkSelfPermission(AddVenueActivity.this,
 								android.Manifest.permission.ACCESS_FINE_LOCATION)
 								== PackageManager.PERMISSION_GRANTED) {
 							mGoogleApiClient.connect();
